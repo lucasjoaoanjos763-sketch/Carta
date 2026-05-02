@@ -1,132 +1,129 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Georgia, serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Georgia, serif;
 }
 
 body {
-  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .container {
-  text-align: center;
+    text-align: center;
+    margin-top: 150px;
 }
 
 .envelope-wrapper {
-  position: relative;
-  cursor: pointer;
+    position: relative;
+    cursor: pointer;
 }
 
 .envelope {
-  position: relative;
-  width: 320px;
-  height: 220px;
+    position: relative;
+    width: 320px;
+    height: 220px;
 }
 
-/* Parte base envelope */
 .front {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #f08080;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  border-radius: 8px;
-  z-index: 3;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #f08080;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    border-radius: 8px;
+    z-index: 3;
 }
 
-/* Tampa */
 .flap {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #ff6b81;
-  clip-path: polygon(0 0, 50% 55%, 100% 0);
-  transform-origin: top;
-  transition: 0.8s ease;
-  z-index: 5;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ff6b81;
+    clip-path: polygon(0 0, 50% 55%, 100% 0);
+    transform-origin: top;
+    transition: 0.8s ease;
+    z-index: 5;
 }
 
-/* Carta */
+/* CAIXA DE TEXTO AMPLIADA */
 .letter {
-  position: absolute;
-  width: 90%;
-  height: 190px;
-  background: white;
-  left: 5%;
-  bottom: 0;
-  border-radius: 10px;
-  padding: 20px;
-  transition: 1s ease;
-  z-index: 2;
-  overflow-y: auto;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    position: absolute;
+    width: 90%;
+    height: 280px; /* Altura maior para o texto */
+    background: white;
+    left: 5%;
+    bottom: 0;
+    border-radius: 10px;
+    padding: 25px;
+    transition: 1s ease;
+    z-index: 2;
+    overflow-y: auto;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .text strong {
-  display: block;
-  margin-bottom: 10px;
-  color: #d6336c;
-  font-size: 20px;
+    display: block;
+    margin-bottom: 15px;
+    color: #d6336c;
+    font-size: 22px;
 }
 
 .text p {
-  font-size: 13px;
-  color: #444;
-  line-height: 1.5;
+    font-size: 15px;
+    color: #444;
+    line-height: 1.6;
 }
 
-/* Coração botão */
 .heart {
-  position: absolute;
-  width: 35px;
-  height: 35px;
-  background: crimson;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(45deg);
-  z-index: 6;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: crimson;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    z-index: 6;
+    transition: 0.5s;
 }
 
 .heart::before,
 .heart::after {
-  content: "";
-  position: absolute;
-  width: 35px;
-  height: 35px;
-  background: crimson;
-  border-radius: 50%;
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: crimson;
+    border-radius: 50%;
 }
 
-.heart::before {
-  top: -17px;
-  left: 0;
-}
+.heart::before { top: -17px; left: 0; }
+.heart::after { left: -17px; top: 0; }
 
-.heart::after {
-  left: -17px;
-  top: 0;
-}
-
-/* Abrir envelope */
+/* ANIMAÇÕES */
 .open .flap {
-  transform: rotateX(180deg);
-  z-index: 1;
+    transform: rotateX(180deg);
+    z-index: 1;
 }
 
 .open .letter {
-  /* AUMENTADO: de -130px para -180px para que a carta saia mais */
-  transform: translateY(-180px);
-  z-index: 4;
+    transform: translateY(-220px); /* Movimento de subida maior */
+    z-index: 4;
+}
+
+.open .heart {
+    opacity: 0;
 }
 
 .hint {
-  margin-top: 20px;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
+    margin-top: 20px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
