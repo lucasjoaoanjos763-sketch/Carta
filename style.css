@@ -119,7 +119,8 @@ body {
 }
 
 .open .letter {
-  transform: translateY(-130px);
+  /* AUMENTADO: de -130px para -180px para que a carta saia mais */
+  transform: translateY(-180px);
   z-index: 4;
 }
 
